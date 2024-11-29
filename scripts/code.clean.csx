@@ -18,7 +18,7 @@ using System.Net.Http.Json;
         {
             CreateNoWindow = true,
             FileName = "dotnet",
-            Arguments = $"jb cleanupcode --include=\"{files}\" --no-build ../NetAdmin.sln",
+            Arguments = $"jb cleanupcode --include=\"{files}\" --no-build ../NetAdmin.ApiSkin.sln",
             UseShellExecute = false,
             RedirectStandardOutput = true
         }

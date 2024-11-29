@@ -19,7 +19,7 @@ $tag = $( git describe --tags $( git rev-list --tags --max-count = 1 ) )
 git tag -d $tag
 git tag $tag
 git push --tags origin release
-Start-Process -FilePath "https://github.com/nsnail/NetAdmin/compare/main...release"
+Start-Process -FilePath "https://github.com/nsnail/NetAdmin.ApiSkin/compare/main...release"
 Write-Host "按『Enter』回到tk分支，『Ctrl+C』退出"
 Pause
 git checkout main

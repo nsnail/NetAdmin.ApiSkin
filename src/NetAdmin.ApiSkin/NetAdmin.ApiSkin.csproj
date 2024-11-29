@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../build/prebuild.targets"/>
+    <PropertyGroup>
+        <PackageId>NetAdmin.ApiSkin</PackageId>
+    </PropertyGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="webjars/**/*"/>
+        <EmbeddedResource Include="favicon.ico"/>
+        <EmbeddedResource Include="index.html"/>
+    </ItemGroup>
+</Project>
