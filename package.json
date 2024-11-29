@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "1.0.0",
   "devDependencies": {
     "cz-git": "^1.11.0",
     "commitizen": "^4.3.1",
