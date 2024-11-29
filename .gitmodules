@@ -1,9 +1,0 @@
-[submodule "refs/Gurion"]
-    path = refs/Gurion
-    url = https://github.com/nsnail/Gurion.git
-[submodule "refs/ns-ext"]
-    path = refs/ns-ext
-    url = https://github.com/nsnail/ns-ext.git
-[submodule "refs/NetAdmin.FreeSql"]
-    path = refs/NetAdmin.FreeSql
-    url = https://github.com/nsnail/NetAdmin.FreeSql.git

@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <CodeAnalysisRuleSet>$(SolutionDir)/build/stylecop.analyzers.ruleset</CodeAnalysisRuleSet>
+        <CodeAnalysisRuleSet>../../build/stylecop.analyzers.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <PropertyGroup>
         <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
@@ -23,7 +23,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="SonarAnalyzer.CSharp" Version="10.3.0.106239">
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="9.32.0.97167">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

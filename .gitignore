@@ -402,4 +402,3 @@ FodyWeavers.xsd
 dist/
 *.[Dd]esigner.cs
 *.db
-/assets/res/Ln.resx
