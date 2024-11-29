@@ -1,0 +1,13 @@
+{
+    "attributeGroups": ["^v-", "$DEFAULT"],
+    "attributeSort": "ASC",
+    "bracketSameLine": true,
+    "endOfLine": "auto",
+    "plugins": ["prettier-plugin-organize-attributes"],
+    "printWidth": 150,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "useTabs": false
+}
