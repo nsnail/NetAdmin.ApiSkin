@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -34,29 +34,34 @@ public class ApiSkinMiddleware
 
     public async Task Invoke(HttpContext httpContext)
     {
-        var httpMethod = httpContext.Request.Method;
-        var path       = httpContext.Request.Path.Value;
+        try {
+            var httpMethod = httpContext.Request.Method;
+            var path       = httpContext.Request.Path.Value;
 
-        switch (httpMethod) {
-            // If the RoutePrefix is requested (with or without trailing slash), redirect to index URL
-            case "GET" when Regex.IsMatch(path!, $"^/?{Regex.Escape(_options.RoutePrefix)}/?$"): {
-                // Use relative redirect to support proxy environments
-                var relativeRedirectPath = "/".EndsWith(path, StringComparison.OrdinalIgnoreCase)
-                    ? "index.html"
-                    : $"{path.Split('/').Last()}/index.html";
+            switch (httpMethod) {
+                // If the RoutePrefix is requested (with or without trailing slash), redirect to index URL
+                case "GET" when Regex.IsMatch(path!, $"^/?{Regex.Escape(_options.RoutePrefix)}/?$"): {
+                    // Use relative redirect to support proxy environments
+                    var relativeRedirectPath = "/".EndsWith(path, StringComparison.OrdinalIgnoreCase)
+                        ? "index.html"
+                        : $"{path.Split('/').Last()}/index.html";
 
-                RespondWithRedirect(httpContext.Response, relativeRedirectPath);
-                return;
+                    RespondWithRedirect(httpContext.Response, relativeRedirectPath);
+                    return;
+                }
+                case "GET" when Regex.IsMatch(path, $"^/{Regex.Escape(_options.RoutePrefix)}/?index.html$"):
+                    await RespondWithIndexHtml(httpContext.Response);
+                    return;
+                case "GET" when Regex.IsMatch(path, "/swagger-resources$"):
+                    await RespondWithConfig(httpContext.Response);
+                    return;
+                default:
+                    await _staticFileMiddleware.Invoke(httpContext);
+                    break;
             }
-            case "GET" when Regex.IsMatch(path, $"^/{Regex.Escape(_options.RoutePrefix)}/?index.html$"):
-                await RespondWithIndexHtml(httpContext.Response);
-                return;
-            case "GET" when Regex.IsMatch(path, "/swagger-resources$"):
-                await RespondWithConfig(httpContext.Response);
-                return;
-            default:
-                await _staticFileMiddleware.Invoke(httpContext);
-                break;
+        }
+        catch (Exception ex) {
+            Console.WriteLine(ex.StackTrace);
         }
     }
 
